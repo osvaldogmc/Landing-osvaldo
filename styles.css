@@ -2,6 +2,9 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background: #ffffff;  /* Fondo claro por defecto */
+  color: #222;          /* Texto oscuro por defecto */
+  transition: background 0.3s ease, color 0.3s ease; /* transición suave */
 }
 
 header {
@@ -43,6 +46,7 @@ header {
 .hero {
   text-align: center;
   padding: 40px 20px;
+  color: #222; /* aseguro visibilidad en modo claro */
 }
 
 .hero-img {
@@ -51,10 +55,16 @@ header {
   margin-top: 20px;
 }
 
+.content,
+.bio-text {
+  color: #222; /* textos normales visibles en modo claro */
+}
+
 footer {
   background: #f1f1f1;
   padding: 20px;
   text-align: center;
+  color: #222; /* texto oscuro en modo claro */
 }
 
 #btnTop {
@@ -103,13 +113,13 @@ footer {
   border: none;
   color: #fff;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   padding: 8px 12px;
+  transition: transform 0.2s ease;
 }
 
-/* En modo oscuro */
-body.dark-mode .theme-btn {
-  color: #eaeaea;
+.theme-btn:hover {
+  transform: scale(1.2);
 }
 
 /* 🌙 Modo oscuro */
@@ -133,4 +143,10 @@ body.dark-mode .nav-links a {
 body.dark-mode footer {
   background: #1f1f1f;
   color: #eaeaea;
+}
+
+body.dark-mode .hero,
+body.dark-mode .content,
+body.dark-mode .bio-text {
+  color: #eaeaea; /* aseguro visibilidad en modo oscuro */
 }
