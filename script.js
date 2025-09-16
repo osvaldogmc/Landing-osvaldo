@@ -28,10 +28,10 @@ if (themeToggleItem) {
   function applyTheme(theme) {
     if (theme === "dark") {
       document.body.classList.add("dark-mode");
-      toggleThemeBtn.innerText = "☀️"; // icono sol
+      toggleThemeBtn.innerText = "☀️";
     } else {
       document.body.classList.remove("dark-mode");
-      toggleThemeBtn.innerText = "🌙"; // icono luna
+      toggleThemeBtn.innerText = "🌙";
     }
   }
 
@@ -51,5 +51,10 @@ if (themeToggleItem) {
     const newTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
     localStorage.setItem("theme", newTheme);
     applyTheme(newTheme);
+
+    // 🔹 Ocultar menú hamburguesa al presionar el botón (solo en móvil)
+    if (navLinks.classList.contains("show")) {
+      navLinks.classList.remove("show");
+    }
   });
 }
