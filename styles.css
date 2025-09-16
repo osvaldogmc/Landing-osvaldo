@@ -107,6 +107,10 @@ body.dark-mode header {
   background: #1f1f1f;
 }
 
+body.dark-mode .nav-links {
+  background: #1f1f1f;
+}
+
 body.dark-mode .nav-links a {
   color: #eaeaea;
 }

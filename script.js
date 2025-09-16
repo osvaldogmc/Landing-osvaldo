@@ -1,25 +1,52 @@
-// 🌙 Modo oscuro con persistencia
+// ===== Menú hamburguesa =====
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("show");
+  });
+}
+
+// ===== Botón volver arriba =====
+const btnTop = document.getElementById("btnTop");
+if (btnTop) {
+  btnTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// ===== Modo oscuro con persistencia =====
 const toggleThemeBtn = document.createElement("button");
 toggleThemeBtn.id = "toggleTheme";
 document.querySelector("footer").appendChild(toggleThemeBtn);
 
-// Verificar si hay tema guardado en localStorage
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark-mode");
-  toggleThemeBtn.innerText = "☀️ Modo Claro";
-} else {
-  toggleThemeBtn.innerText = "🌙 Modo Oscuro";
+// Función para aplicar tema según estado guardado
+function applyTheme(theme) {
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleThemeBtn.innerText = "☀️ Modo Claro";
+  } else {
+    document.body.classList.remove("dark-mode");
+    toggleThemeBtn.innerText = "🌙 Modo Oscuro";
+  }
 }
 
-// Evento para cambiar tema
-toggleThemeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-
-  if (document.body.classList.contains("dark-mode")) {
-    toggleThemeBtn.innerText = "☀️ Modo Claro";
-    localStorage.setItem("theme", "dark");
+// Revisar localStorage al cargar la página
+let savedTheme = localStorage.getItem("theme");
+if (!savedTheme) {
+  // Si no hay preferencia, tomar la del sistema
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    savedTheme = "dark";
   } else {
-    toggleThemeBtn.innerText = "🌙 Modo Oscuro";
-    localStorage.setItem("theme", "light");
+    savedTheme = "light";
   }
+}
+applyTheme(savedTheme);
+
+// Evento al presionar el botón
+toggleThemeBtn.addEventListener("click", () => {
+  const newTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
+  localStorage.setItem("theme", newTheme);
+  applyTheme(newTheme);
 });
