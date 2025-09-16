@@ -16,37 +16,40 @@ if (btnTop) {
   });
 }
 
-// ===== Modo oscuro con persistencia =====
-const toggleThemeBtn = document.createElement("button");
-toggleThemeBtn.id = "toggleTheme";
-document.querySelector("footer").appendChild(toggleThemeBtn);
+// ===== Modo oscuro con persistencia (icono 🌙 / ☀️) =====
+const themeToggleItem = document.getElementById("theme-toggle-item");
+if (themeToggleItem) {
+  const toggleThemeBtn = document.createElement("button");
+  toggleThemeBtn.id = "toggleTheme";
+  toggleThemeBtn.classList.add("theme-btn");
+  themeToggleItem.appendChild(toggleThemeBtn);
 
-// Función para aplicar tema según estado guardado
-function applyTheme(theme) {
-  if (theme === "dark") {
-    document.body.classList.add("dark-mode");
-    toggleThemeBtn.innerText = "☀️ Modo Claro";
-  } else {
-    document.body.classList.remove("dark-mode");
-    toggleThemeBtn.innerText = "🌙 Modo Oscuro";
+  // Función para aplicar tema según estado guardado
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      document.body.classList.add("dark-mode");
+      toggleThemeBtn.innerText = "☀️"; // icono sol
+    } else {
+      document.body.classList.remove("dark-mode");
+      toggleThemeBtn.innerText = "🌙"; // icono luna
+    }
   }
-}
 
-// Revisar localStorage al cargar la página
-let savedTheme = localStorage.getItem("theme");
-if (!savedTheme) {
-  // Si no hay preferencia, tomar la del sistema
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    savedTheme = "dark";
-  } else {
-    savedTheme = "light";
+  // Revisar localStorage al cargar
+  let savedTheme = localStorage.getItem("theme");
+  if (!savedTheme) {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      savedTheme = "dark";
+    } else {
+      savedTheme = "light";
+    }
   }
-}
-applyTheme(savedTheme);
+  applyTheme(savedTheme);
 
-// Evento al presionar el botón
-toggleThemeBtn.addEventListener("click", () => {
-  const newTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
-  localStorage.setItem("theme", newTheme);
-  applyTheme(newTheme);
-});
+  // Evento al presionar el botón
+  toggleThemeBtn.addEventListener("click", () => {
+    const newTheme = document.body.classList.contains("dark-mode") ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    applyTheme(newTheme);
+  });
+}
