@@ -17,3 +17,10 @@
 **Prompt usado:** "la estructura tiene que tener un index.html, styles.css y un script.js..."  
 **Respuesta breve:** Se generó el proyecto completo con los archivos solicitados, código y documentación.  
 **Aplicación:** Esta es la versión final que se subirá a GitHub.
+
+
+---
+
+👉 Ahora tu página tiene **tres interacciones en JS** (menú hamburguesa, volver arriba y modo oscuro).  
+
+¿Quieres que te prepare un **preview animado (GIF o código en Markdown con capturas)** para mostrarlo directamente en el `README.md` de GitHub?

@@ -6,16 +6,13 @@ Este proyecto es una landing page simple con navegación entre 4 páginas:
 - `logros.html` → Mis logros
 - `gustos.html` → Mis gustos
 
-## 📂 Estructura
-index.html
-habilidades.html
-logros.html
-gustos.html
-styles.css
-script.js
-README.md
-prompts.md
-/img/perfil.jpg
+## ✨ Funcionalidades
+- Navegación entre páginas con barra de menú.
+- Diseño **responsivo** (mobile first).
+- **Interacciones en JavaScript**:
+  - Menú hamburguesa (abre/cierra en móvil).
+  - Botón “volver arriba”.
+  - **Modo oscuro / claro** (activable desde el footer).
 
 
 ## 🚀 Cómo correr localmente
